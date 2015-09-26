@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Couchbase;
+using Couchbase.N1QL;
 
 namespace N1QlInjection
 {
@@ -30,6 +31,18 @@ namespace N1QlInjection
         {
             RunQuery("SELECT * FROM `beer-sample` WHERE type = 'beer' AND name LIKE '%" +
                      edtWhere.Text.Replace("'", "''") + "%' AND brewery_id = '21st_amendment_brewery_cafe'");
+        }
+
+        private void btnWhereSafeParam_Click(object sender, EventArgs e)
+        {
+            var parameters = new Dictionary<string, object>()
+            {
+                { "$name", "%" + edtWhere.Text + "%" }
+            };
+
+            RunQuery("SELECT * FROM `beer-sample` WHERE type = 'beer' AND name LIKE $name " +
+                     "AND brewery_id = '21st_amendment_brewery_cafe'", parameters);
+
         }
 
         private void btnCommentUnsafe_Click(object sender, EventArgs e)
@@ -56,7 +69,7 @@ namespace N1QlInjection
                      "WHERE type = 'beer' AND brewery_id = '21st_amendment_brewery_cafe'");
         }
 
-        private void RunQuery(string query)
+        private void RunQuery(string query, IDictionary<string,object> parameters = null)
         {
             edtResults.Text = query + "\r\n\r\nRunning...";
             tabControl.Enabled = false;
@@ -65,8 +78,15 @@ namespace N1QlInjection
             {
                 var bucket = ClusterHelper.GetBucket("beer-sample");
 
+                var queryRequest = new QueryRequest(query);
+                
+                if (parameters != null)
+                {
+                    queryRequest.AddNamedParameter(parameters.ToArray());
+                };
+
                 var result = await
-                    bucket.QueryAsync<dynamic>(query);
+                    bucket.QueryAsync<dynamic>(queryRequest);
                 if (!result.Success)
                 {
                     if (result.Errors != null && result.Errors.Count > 0)

@@ -43,6 +43,7 @@
             this.btnIdentifierUnsafe = new System.Windows.Forms.Button();
             this.edtIdentifier = new System.Windows.Forms.TextBox();
             this.btnIdentifierSafe = new System.Windows.Forms.Button();
+            this.btnWhereSafeParam = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -65,7 +66,7 @@
             // btnWhereSafe
             // 
             this.btnWhereSafe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWhereSafe.Location = new System.Drawing.Point(609, 109);
+            this.btnWhereSafe.Location = new System.Drawing.Point(470, 109);
             this.btnWhereSafe.Name = "btnWhereSafe";
             this.btnWhereSafe.Size = new System.Drawing.Size(133, 50);
             this.btnWhereSafe.TabIndex = 2;
@@ -107,6 +108,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnWhereSafeParam);
             this.tabPage1.Controls.Add(this.btnWhereUnsafe);
             this.tabPage1.Controls.Add(this.edtWhere);
             this.tabPage1.Controls.Add(this.btnWhereSafe);
@@ -146,7 +148,7 @@
             // btnWhereUnsafe
             // 
             this.btnWhereUnsafe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWhereUnsafe.Location = new System.Drawing.Point(470, 109);
+            this.btnWhereUnsafe.Location = new System.Drawing.Point(331, 109);
             this.btnWhereUnsafe.Name = "btnWhereUnsafe";
             this.btnWhereUnsafe.Size = new System.Drawing.Size(133, 50);
             this.btnWhereUnsafe.TabIndex = 1;
@@ -225,6 +227,17 @@
             this.btnIdentifierSafe.UseVisualStyleBackColor = true;
             this.btnIdentifierSafe.Click += new System.EventHandler(this.btnIdentifierSafe_Click);
             // 
+            // btnWhereSafeParam
+            // 
+            this.btnWhereSafeParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWhereSafeParam.Location = new System.Drawing.Point(609, 109);
+            this.btnWhereSafeParam.Name = "btnWhereSafeParam";
+            this.btnWhereSafeParam.Size = new System.Drawing.Size(133, 50);
+            this.btnWhereSafeParam.TabIndex = 3;
+            this.btnWhereSafeParam.Text = "&Safe Param";
+            this.btnWhereSafeParam.UseVisualStyleBackColor = true;
+            this.btnWhereSafeParam.Click += new System.EventHandler(this.btnWhereSafeParam_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,6 +276,7 @@
         private System.Windows.Forms.Button btnIdentifierUnsafe;
         private System.Windows.Forms.TextBox edtIdentifier;
         private System.Windows.Forms.Button btnIdentifierSafe;
+        private System.Windows.Forms.Button btnWhereSafeParam;
     }
 }
 

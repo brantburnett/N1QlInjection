@@ -14,6 +14,7 @@ to see how the preventative measure works for each attack.
 
 # Preventative Measures
 
-* Escape single quotes in user input strings (') with a pair of single quotes ('')
+* Use named or positional parameters instead of inserting user input directly into the query
+* If inserted user input directly into the query, escape single quotes in user input strings (') with a pair of single quotes ('')
 * Remove comments from the query and place in code instead (this is an additional layer of protection)
 * Escape N1QL identifiers with ticks and escape ticks in user input with a pair of ticks
